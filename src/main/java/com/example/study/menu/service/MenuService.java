@@ -20,8 +20,8 @@ public class MenuService {
     @Transactional
     public Long saveMenu(MenuSaveDto menuSaveDto) {
         MenuEntity menuEntity = menuRepository.save(MenuEntity.builder()
-                .price(menuSaveDto.getPrice())
                 .name(menuSaveDto.getName())
+                .price(menuSaveDto.getPrice())
                 .build());
         return menuEntity.getMenuId();
     }

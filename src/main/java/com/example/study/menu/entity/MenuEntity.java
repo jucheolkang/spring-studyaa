@@ -1,6 +1,7 @@
 package com.example.study.menu.entity;
 
 import jakarta.persistence.Column;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,15 +19,15 @@ public class MenuEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Comment("아이디")
-    public Long menuId;
+    private Long menuId;
 
     @Column(name = "price", nullable = false, length = 64)
     @Comment("가격")
-    public Long price;
+    private Long price;
 
     @Column(name = "name", nullable = false, length = 64)
     @Comment("이름")
-    public String name;
+    private String name;
 
     @Builder
     public MenuEntity(Long price, String name) {
