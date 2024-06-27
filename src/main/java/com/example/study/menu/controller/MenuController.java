@@ -6,6 +6,9 @@ import com.example.study.menu.dto.MenuUpdateDto;
 import com.example.study.menu.dto.ResponseMenuDto;
 import com.example.study.menu.service.MenuService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -20,7 +23,8 @@ import java.util.List;
 @RestController // rest api - url을 통해 값을 주고 받는다
 @RequestMapping("/menu")// http://localhost:8080/menu
 @RequiredArgsConstructor
-public class MenuContorller {
+@CrossOrigin(origins = "*", allowedHeaders = "*")
+public class MenuController {
     private final MenuService menuService;
 
     @PostMapping// http://localhost:8080/menu
@@ -34,13 +38,15 @@ public class MenuContorller {
     // patch, put -> 값 수정
 
     @PatchMapping("/{id}")
-    public void menuUpdate(@PathVariable Long id, @RequestBody MenuUpdateDto menuUpdateDto) {
+    public ResponseEntity menuUpdate(@PathVariable Long id, @RequestBody MenuUpdateDto menuUpdateDto) {
         menuService.updateMenu(id, menuUpdateDto);
+        return new ResponseEntity(HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public void menuDelete(@PathVariable Long id) {
+    public ResponseEntity menuDelete(@PathVariable Long id) {
         menuService.deleteMenu(id);
+        return new ResponseEntity(HttpStatus.OK);
     }
 
     @GetMapping()
