@@ -8,6 +8,7 @@ import com.example.study.menu.service.MenuService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,6 +39,8 @@ public class MenuController {
     // patch, put -> 값 수정
 
     @PatchMapping("/{id}")
+    // http://localhost:8080/menu/{id}
+    // http://localhost:8080/menu/1
     public ResponseEntity menuUpdate(@PathVariable Long id, @RequestBody MenuUpdateDto menuUpdateDto) {
         menuService.updateMenu(id, menuUpdateDto);
         return new ResponseEntity(HttpStatus.OK);
@@ -49,7 +52,7 @@ public class MenuController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @GetMapping()
+    @GetMapping
     public List<ResponseMenuDto> menuFindAll() {
         return menuService.findAllMenus();
     }
