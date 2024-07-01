@@ -36,7 +36,7 @@ public class MenuService {
 
     @Transactional
     public void updateMenu(Long id, MenuUpdateDto menuUpdateDto) {
-        MenuEntity menuEntity = findMenuById(id);
+        MenuEntity menuEntity = findMenuById(id);// 중복적으로 사용하는 경우 함수로 만든다
         menuEntity.update(menuUpdateDto.getPrice(), menuUpdateDto.getName());
     }
 
