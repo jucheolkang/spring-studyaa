@@ -1,4 +1,4 @@
-package com.example.study.globel;
+package com.example.study.global;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

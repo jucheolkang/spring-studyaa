@@ -29,11 +29,6 @@ public class MenuService {
         // 위 리턴 값은 개발자가 프로젝트에 따라서 정의함
     }
 
-    public int add(int a, int b) {
-        int c = a+b;
-        return c;
-    }
-
     @Transactional
     public void updateMenu(Long id, MenuUpdateDto menuUpdateDto) {
         MenuEntity menuEntity = findMenuById(id);// 중복적으로 사용하는 경우 함수로 만든다
@@ -44,6 +39,7 @@ public class MenuService {
     public void deleteMenu(Long id) {
         MenuEntity menuEntity = findMenuById(id);
         menuRepository.delete(menuEntity);
+        /*menuRepository.deleteById(id);*/
     }
 
     public List<ResponseMenuDto> findAllMenus() {
